@@ -7,7 +7,7 @@ const initialState = {
 export const contadorSlice = createSlice({
   name: 'contador',
   initialState,
-  reducer: {
+  reducers: {
 
     incrementar(state, _action) {
       state.valor += 1

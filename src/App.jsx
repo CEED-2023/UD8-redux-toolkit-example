@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import './App.css'
 
 import {
@@ -8,13 +8,32 @@ import {
 function App() {
 
   const valor = useSelector(selectValor)
+  const dispatch = useDispatch()
+
+  function incrementar() {
+    const action = {
+      type: 'contador/incrementar'
+    }
+    dispatch(action)
+  }
+
+  function decrementar(){
+    const action = {
+      type: 'contador/decrementar'
+    }
+    dispatch(action)
+  }
 
   return (
     <>
       <h1>Contador: {valor}</h1>
-      <button>Incrementar</button>
+      <button onClick={incrementar}>
+        Incrementar
+      </button>
       <p/>
-      <button>Decrementar</button>
+      <button onClick={decrementar}>
+        Decrementar
+      </button>
     </>
   )
 }
