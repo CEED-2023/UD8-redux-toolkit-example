@@ -8,7 +8,15 @@ export const contadorSlice = createSlice({
   name: 'contador',
   initialState,
   reducer: {
-    
+
+    incrementar(state, _action) {
+      state.valor += 1
+    },
+
+    decrementar(state, _action) {
+      state.valor -= 1
+    }
+
   }
 })
 
