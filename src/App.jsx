@@ -2,36 +2,34 @@ import { useSelector, useDispatch } from 'react-redux'
 import './App.css'
 
 import {
-  selectValor
+  selectValor,
+
+  incrementar,
+  decrementar
 } from './contadorSlice'
+
 
 function App() {
 
   const valor = useSelector(selectValor)
   const dispatch = useDispatch()
 
-  function incrementar() {
-    const action = {
-      type: 'contador/incrementar'
-    }
-    dispatch(action)
+  function onIncrementar() {
+    dispatch(incrementar())
   }
 
-  function decrementar(){
-    const action = {
-      type: 'contador/decrementar'
-    }
-    dispatch(action)
+  function onDecrementar(){
+    dispatch(decrementar())
   }
 
   return (
     <>
       <h1>Contador: {valor}</h1>
-      <button onClick={incrementar}>
+      <button onClick={onIncrementar}>
         Incrementar
       </button>
       <p/>
-      <button onClick={decrementar}>
+      <button onClick={onDecrementar}>
         Decrementar
       </button>
     </>

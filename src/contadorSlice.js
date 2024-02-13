@@ -20,6 +20,11 @@ export const contadorSlice = createSlice({
   }
 })
 
+export const {
+  incrementar,
+  decrementar
+} = contadorSlice.actions
+
 export const selectValor = state => state.contador.valor
 
 export default contadorSlice.reducer
