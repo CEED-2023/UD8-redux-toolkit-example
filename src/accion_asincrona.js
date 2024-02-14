@@ -8,7 +8,7 @@ function accionAsincrona(resultado, fallar=false) {
 
     setTimeout(() => {
       resolve(resultado)
-    }, 3000);
+    }, 2000);
   })
 }
 

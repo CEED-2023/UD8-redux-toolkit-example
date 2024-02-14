@@ -10,6 +10,7 @@ import {
   cambiarIncremento
 } from './contadorSlice'
 
+import accionAsincrona from './accion_asincrona'
 
 function App() {
 
@@ -21,11 +22,11 @@ function App() {
     dispatch(cambiarIncremento(event.target.value))
   }
 
-  function onIncrementarAsincrono(){
-    console.log('onIncrementarAsincrono')
+  async function onDuplicarAsincrono(){
+    console.log('onDuplicarAsincrono')
   }
-  function onDecrementarAsincrono(){
-    console.log('onDecrementarAsincrono')
+  function onDemediarAsincrono(){
+    console.log('onDemediarAsincrono')
   }
 
   return (
@@ -48,11 +49,11 @@ function App() {
 
       <p/>
 
-      <button onClick={onIncrementarAsincrono}>
-        Incrementar asíncrono
+      <button onClick={onDuplicarAsincrono}>
+        Duplicar asíncrono
       </button>
-      <button onClick={onDecrementarAsincrono}>
-        Decrementar asíncrono
+      <button onClick={onDemediarAsincrono}>
+        Demediar asíncrono
       </button>
 
     </>
