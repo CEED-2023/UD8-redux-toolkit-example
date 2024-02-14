@@ -21,23 +21,40 @@ function App() {
     dispatch(cambiarIncremento(event.target.value))
   }
 
+  function onIncrementarAsincrono(){
+    console.log('onIncrementarAsincrono')
+  }
+  function onDecrementarAsincrono(){
+    console.log('onDecrementarAsincrono')
+  }
+
   return (
     <>
       <h1>Contador: {valor}</h1>
       <br/>
-      Incrementar en:
+      Incrementar en: &nbsp;
       <input type="text"
         value={incremento}
         onChange={onIncremento}
       />
-      <br/>
+      <br/><br/>
+
       <button onClick={() => dispatch(incrementar(incremento))}>
         Incrementar
       </button>
-      <p/>
       <button onClick={() => dispatch(decrementar(incremento))}>
         Decrementar
       </button>
+
+      <p/>
+
+      <button onClick={onIncrementarAsincrono}>
+        Incrementar asíncrono
+      </button>
+      <button onClick={onDecrementarAsincrono}>
+        Decrementar asíncrono
+      </button>
+
     </>
   )
 }
