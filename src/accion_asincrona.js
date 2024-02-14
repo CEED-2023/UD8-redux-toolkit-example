@@ -1,13 +1,11 @@
 function accionAsincrona(resultado, fallar=false) {
   return new Promise( (resolve, reject) => {
 
-    if(fallar) {
-      reject('Ha ocurrido un horrible error')
-      return
-    }
+
 
     setTimeout(() => {
-      resolve(resultado)
+      if(fallar) reject('Ha ocurrido un horrible error')
+      else resolve(resultado)
     }, 2000);
   })
 }
