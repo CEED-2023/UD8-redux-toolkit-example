@@ -28,16 +28,18 @@ export const contadorSlice = createSlice({
     },
 
 
-    multiplicarPending(state, _action){
+    multiplicarPending(state, action){
+      console.log('Pending')
       state.cargando = true
       state.error = null
     },
     multiplicarResolved(state, action){
+      console.log('Resolved')
       state.cargando = false
       state.valor *= action.payload
     },
     multiplicarRejected(state, action){
-      console.log('rejected')
+      console.log('Rejected')
       state.cargando = false
       state.error = action.payload
     },

@@ -5,7 +5,6 @@ import {
   selectValor,
   selectIncremento,
   selectCargando,
-  selectError,
 
   incrementar,
   decrementar,
@@ -23,7 +22,7 @@ function App() {
   const valor = useSelector(selectValor)
   const incremento = useSelector(selectIncremento)
   const cargando = useSelector(selectCargando)
-  const error = useSelector(selectError)
+  const error = useSelector(state => state.contador.error)
 
   const dispatch = useDispatch()
 
@@ -71,8 +70,8 @@ function App() {
         Dividir asíncrono
       </button>
       <br/>
-      {cargando && <p>Cargando...</p>}
-      {error && <h1>Terrible error: {error}</h1>}
+      { cargando && <p>Cargando...</p> }
+      { error && <h3>Error: {error}</h3> }
     </>
   )
 }
