@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import accionAsincrona from './accion_asincrona'
 
 const initialState = {
   valor: 1,
@@ -6,6 +7,16 @@ const initialState = {
   cargando: false,
   error: null
 }
+
+export const dividirAsincrono = createAsyncThunk(
+  'dividirAsincrono',
+  async (param) => {
+    const res = await accionAsincrona(param, true)
+    console.log('dividirAsincrono', res)
+    return res
+  }
+)
+
 
 export const contadorSlice = createSlice({
   name: 'contador',
@@ -28,7 +39,7 @@ export const contadorSlice = createSlice({
     },
 
 
-    multiplicarPending(state, action){
+    multiplicarPending(state, _action){
       console.log('Pending')
       state.cargando = true
       state.error = null
@@ -45,6 +56,21 @@ export const contadorSlice = createSlice({
     },
 
 
+  },
+  extraReducers(builder) {
+    builder
+    .addCase(dividirAsincrono.pending, (state, _action) => {
+      state.cargando = true
+      state.error = null
+    })
+    .addCase(dividirAsincrono.fulfilled, (state, action) => {
+      state.cargando = false
+      state.valor /= action.payload
+    })
+    .addCase(dividirAsincrono.rejected, (state, action) => {
+      state.cargando = false
+      state.error = action.error.message
+    })
   }
 })
 

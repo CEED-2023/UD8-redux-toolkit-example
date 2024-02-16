@@ -12,7 +12,9 @@ import {
 
   multiplicarPending,
   multiplicarResolved,
-  multiplicarRejected
+  multiplicarRejected,
+
+  dividirAsincrono
 } from './contadorSlice'
 
 import accionAsincrona from './accion_asincrona'
@@ -40,7 +42,7 @@ function App() {
     }
   }
   function onDividirAsincrono(){
-    console.log('onDividirAsincrono')
+    dispatch(dividirAsincrono(incremento))
   }
 
   return (
